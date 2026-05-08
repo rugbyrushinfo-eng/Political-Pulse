@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, ui-serif, serif;
+  --color-brand-green: #007a4d;
+  --color-brand-gold: #ffb81c;
+  --color-brand-red: #e03c31;
+  --color-card-bg: #fcfcfc;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 font-sans;
+  }
+}
+
+.markdown-body {
+  @apply prose prose-zinc max-w-none prose-headings:font-serif prose-headings:font-bold prose-h1:text-5xl prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-6 prose-p:leading-relaxed prose-li:my-2 prose-p:text-lg;
+}
+
+.magazine-header {
+  @apply sticky top-0 z-50 bg-black text-white border-b-4 border-brand-green;
+}
+
+.sidebar-heading {
+  @apply text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold border-b border-zinc-100 pb-2 mb-4;
+}
+
+.breaking-label {
+  @apply inline-block bg-brand-red text-white py-1.5 px-3 text-[10px] font-black uppercase tracking-wider mb-4;
+}
+
+.card-magazine {
+  @apply bg-white border border-zinc-100 transition-all duration-300 hover:border-zinc-300;
+}
