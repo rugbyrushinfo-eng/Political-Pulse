@@ -482,11 +482,42 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
 function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: BlogPost[]) => void }) {
   const navigate = useNavigate();
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [isCreating, setIsCreating] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passkey, setPasskey] = useState('');
   const [error, setError] = useState(false);
+
+  const startNewPost = () => {
+    const newTemplate: BlogPost = {
+      id: Math.random().toString(36).substr(2, 9),
+      title: "",
+      slug: "",
+      category: CATEGORIES[0],
+      date: new Date().toISOString(),
+      author: "Administrative Editor",
+      excerpt: "",
+      image: {
+        url: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=1200",
+        alt: "Political Analysis Cover",
+        caption: "Standard briefing visualization."
+      },
+      meta: {
+        title: "| Political Pulse",
+        description: "",
+        keywords: []
+      },
+      keyTakeaways: ["Drafting in progress..."],
+      internalLinks: [],
+      externalSources: [],
+      faq: [],
+      content: "# New Analysis\n\nWrite your briefing here using Markdown."
+    };
+    setEditingPost(newTemplate);
+    setIsCreating(true);
+    window.scrollTo(0, 0);
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -562,15 +593,29 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
 
   const handleEdit = (post: BlogPost) => {
     setEditingPost({ ...post });
+    setIsCreating(false);
     window.scrollTo(0, 0);
   };
 
-  const saveEdit = () => {
+  const saveContent = () => {
     if (editingPost) {
-      const updated = posts.map(p => p.id === editingPost.id ? editingPost : p);
-      setPosts(updated);
+      // Basic validation
+      if (!editingPost.title || !editingPost.slug) {
+        setStatusMessage("Error: Title and Slug are required.");
+        return;
+      }
+
+      if (isCreating) {
+        setPosts([editingPost, ...posts]);
+        setStatusMessage("New intelligence briefing published.");
+      } else {
+        const updated = posts.map(p => p.id === editingPost.id ? editingPost : p);
+        setPosts(updated);
+        setStatusMessage("Changes committed to archive.");
+      }
+      
       setEditingPost(null);
-      setStatusMessage("Changes committed to archive.");
+      setIsCreating(false);
       setTimeout(() => setStatusMessage(null), 3000);
     }
   };
@@ -608,6 +653,12 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
               className="px-6 py-2 border border-zinc-200 bg-white text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-50 transition-colors"
             >
               Exit Dashboard
+            </button>
+            <button 
+              onClick={startNewPost}
+              className="flex items-center gap-2 px-6 py-2 border border-black bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-50 transition-all"
+            >
+              <Plus className="w-3 h-3" /> Manual Post
             </button>
             <button 
               onClick={triggerGeneration}
@@ -685,7 +736,8 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
               {editingPost ? (
                 <div className="space-y-6">
                   <div className="flex items-center gap-2 text-brand-gold font-black text-[10px] uppercase tracking-[0.2em] mb-4">
-                    <Edit3 className="w-4 h-4" /> Live Intelligence Edit
+                    {isCreating ? <Plus className="w-4 h-4" /> : <Edit3 className="w-4 h-4" />} 
+                    {isCreating ? 'Draft New Briefing' : 'Live Intelligence Edit'}
                   </div>
                   
                   <div>
@@ -699,6 +751,17 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
                       value={editingPost.title} 
                       onChange={(e) => setEditingPost(prev => prev ? { ...prev, title: e.target.value } : null)}
                       className="w-full bg-zinc-800 border-none text-white px-4 py-3 text-xs leading-relaxed focus:ring-1 focus:ring-brand-gold h-20"
+                      placeholder="e.g. National Budget Outlook 2026"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[8px] font-black text-zinc-500 uppercase tracking-widest mb-2">URL Slug (no spaces)</label>
+                    <input 
+                      value={editingPost.slug} 
+                      onChange={(e) => setEditingPost(prev => prev ? { ...prev, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') } : null)}
+                      className="w-full bg-zinc-800 border-none text-white px-4 py-2 text-[10px] focus:ring-1 focus:ring-brand-gold"
+                      placeholder="e.g. national-budget-2026"
                     />
                   </div>
 
@@ -722,15 +785,24 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
                     />
                   </div>
 
+                  <div>
+                    <label className="block text-[8px] font-black text-zinc-500 uppercase tracking-widest mb-2">Full Content (Markdown)</label>
+                    <textarea 
+                      value={editingPost.content} 
+                      onChange={(e) => setEditingPost(prev => prev ? { ...prev, content: e.target.value } : null)}
+                      className="w-full bg-zinc-800 border-none text-white px-4 py-3 text-[10px] font-mono leading-relaxed focus:ring-1 focus:ring-brand-gold h-48"
+                    />
+                  </div>
+
                   <div className="pt-6 grid grid-cols-2 gap-4">
                     <button 
-                      onClick={() => setEditingPost(null)}
+                      onClick={() => {setEditingPost(null); setIsCreating(false);}}
                       className="px-4 py-3 bg-zinc-800 text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-700 transition-colors"
                     >
                       Cancel
                     </button>
                     <button 
-                      onClick={saveEdit}
+                      onClick={saveContent}
                       className="flex items-center justify-center gap-2 px-4 py-3 bg-brand-gold text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all"
                     >
                       <Save className="w-3 h-3" /> Commit Brief
