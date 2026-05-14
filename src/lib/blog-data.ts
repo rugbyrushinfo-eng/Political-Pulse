@@ -34,7 +34,7 @@ export const CATEGORIES = [
   "Global ZAR"
 ];
 
-export const DATA_VERSION = "2026-05-14-v2";
+export const DATA_VERSION = "2026-05-14-v4";
 
 export const INITIAL_POSTS: BlogPost[] = [
   {
@@ -80,24 +80,6 @@ Under scrutiny is the $4 million in cash discovered hidden in a sofa at his Phal
 - *FB:* BREAKING: Is this the end for Cyril? 🛋️💸 The Phala Phala impeachment is gathering steam. #Ramaphosa #Farmgate #BreakingNews
 - *X:* IMPEACHED? The committee is in session. Ramaphosa’s political life hangs in the balance. 🇿🇦 #PoliticalPulse #SAReform
 - *IG:* SHOCKWAVES: The 'Sofa Scandal' hits Parliament. We have the full breakdown. 🏛️📈 #PoliticalIntelligence #GNU
-
----
-
-### 🎥 MEDIA KIT & PRODUCTION ASSETS
-*Internal Release*
-
-**YouTube Script Summary (Top 3 Stories):**
-- **Intro:** "Welcome back to the Pulse. Today, the Presidency is on the line."
-- **Segment 1:** Ramaphosa Impeachment. Direct footage from Cape Town. Explain the hidden $4M and the ConCourt ruling. 
-- **Segment 2:** Ghana Evacuation. Show the flights in Gauteng. Interview the AU delegate.
-- **Segment 3:** Flood Disaster. Aerial views of the Western Cape damage. Demand an update on the infrastructure budget.
-- **Outro:** "Who wins the election if the President falls? Subscribe for our deep dive."
-
-**Viral Facebook Lead (#1 Story):**
-"🚨 BREAKING NEWS 🚨 The moment we’ve all been waiting for… Cyril Ramaphosa is facing an IMPEACHMENT committee over the Phala Phala 'Farmgate' scandal! 🏛️🗳️ Is the GNU about to crack? 🇿🇦 We have the EXCLUSIVE details from Parliament. 👇 #Ramaphosa #Farmgate #BreakingPolitics #SouthAfrica #GNU #PoliticalPulse"
-
-**Newsletter Header Intro:**
-"Welcome to today's Political Pulse. The headline is clear: The Presidency is in peril. As the Phala Phala saga returns to center stage, we also track a burgeoning crisis with our neighbors in Ghana and a national state of disaster in the Cape. Today’s briefing decodes these narratives to give you the strategic edge in a volatile landscape."
     `
   },
   {
@@ -244,8 +226,8 @@ The Treasury has confirmed that the priority will be stabilizing the power grid 
     author: "Zahin van der Merwe",
     excerpt: "Luthuli House has issued a 'not negotiable' decree: The President stays. But is the party's base following the leaders?",
     image: {
-      url: "https://images.unsplash.com/photo-1541873676947-9cc09174e0d0?auto=format&fit=crop&q=80&w=1200",
-      alt: "ANC rally colors",
+      url: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=1200",
+      alt: "Political meeting",
       caption: "Internal party discipline is being tested as the 2026 polls loom."
     },
     meta: {
@@ -418,8 +400,8 @@ Beyond the minerals, the deal includes a binding agreement to build a local proc
     author: "Political Pulse Analysis",
     excerpt: "We crunch the numbers. With the ANC NEC closing ranks, the President looks safe—but can a secret ballot change everything?",
     image: {
-      url: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=1200",
-      alt: "Parliament house",
+      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+      alt: "Parliament house interior",
       caption: "The math of the GNU is being tested like never before."
     },
     meta: {
@@ -461,7 +443,7 @@ The Speaker is under intense pressure to allow a secret ballot. If granted, our 
     author: "Infrastructure Watch",
     excerpt: "Gauteng's water crisis finally gets a R50 billion solution. Is this the end of 'Water-shifting' in the economic heartland?",
     image: {
-      url: "https://images.unsplash.com/photo-1541873676947-9cc09174e0d0?auto=format&fit=crop&q=80&w=1200",
+      url: "https://images.unsplash.com/photo-1470058869852-ae01579d5010?auto=format&fit=crop&q=80&w=1200",
       alt: "Water pipes and construction",
       caption: "The project involves over 400km of renewed piping across the province."
     },
@@ -588,8 +570,8 @@ Starlink argues their model requires global uniformity. ICASA argues our laws ar
     author: "Zahin van der Merwe",
     excerpt: "For the second time this year, the SANDF has been called to the streets of Johannesburg. Is this a necessary crackdown or a dangerous overreach?",
     image: {
-      url: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&q=80&w=1200",
-      alt: "City skyline with construction",
+      url: "https://images.unsplash.com/photo-1575908615372-520e7df6f500?auto=format&fit=crop&q=80&w=1200",
+      alt: "City security",
       caption: "The revitalization of Joburg's inner city remains a contentious political project."
     },
     meta: {
@@ -630,8 +612,8 @@ Hijacked buildings are generating R100m a month in untaxed rent for organized cr
     author: "Zahin van der Merwe",
     excerpt: "Despite the Phala Phala revival, the ANC's inner circle has doubled down on Cyril Ramaphosa, signaling a unified front for the upcoming 2026 municipal and provincial polls.",
     image: {
-      url: "https://images.unsplash.com/photo-1541873676947-9cc09174e0d0?auto=format&fit=crop&q=80&w=1200",
-      alt: "Political rally background",
+      url: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=1200",
+      alt: "Political meeting",
       caption: "Unity and discipline remain the keywords as the ANC prepares for a high-stakes election cycle."
     },
     meta: {
@@ -693,7 +675,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [{ text: "IEC South Africa", url: "https://www.elections.org.za" }],
     faq: [],
-    content: "Content for IEC Digital Overhaul..."
+    content: `
+# BLOCKCHAIN BALLOTS: The IEC's Digital Fortress
+
+The Electoral Commission (IEC) has officially launched its 2026 'Digital Integrity Framework,' a massive technological overhaul designed to eliminate voter roll fraud and ensure that every ballot cast in the upcoming municipal elections is beyond reproach.
+
+## Why It Matters
+In the era of deepfakes and AI-driven disinformation, the sanctity of the vote is under threat. By moving the national voter roll onto a private, state-governed blockchain, the IEC is ensuring that records cannot be altered by foreign or domestic actors once they are finalized.
+
+## The Rollout
+Voters in Gauteng and the Western Cape will be the first to trial the new 'Digital ID' registration system. While traditional paper backups remain, the digital backbone will allow for near-instant auditing of results, significantly reducing the tension that often follows a close election.
+    `
   },
   {
     id: "19",
@@ -717,7 +709,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Buffalo City..."
+    content: `
+# BUFFALO CITY BREAKTHROUGH: The Rise of the Coalition
+
+East London and King Williams Town are experiencing a political shift that could redefine the Eastern Cape. For decades a solid ANC stronghold, the Buffalo City Metro is now the site of complex, multi-party negotiations that are starting to yield surprising results in service delivery.
+
+## Why It Matters
+The Eastern Cape is often seen as the political heart of the ANC. If a multi-party coalition can succeed in Buffalo City, it proves that the GNU model is scalable to even the most entrenched provincial regions. It moves the conversation from loyalty to performance.
+
+## The Local Focus
+Under the new alliance, the focus has shifted to the modernization of the East London harbor and the fixing of rural-to-urban transport corridors. While tensions exist, the 'Shared Governance Agreement' is currently holding firm.
+    `
   },
   {
     id: "20",
@@ -741,7 +743,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for KZN Stability..."
+    content: `
+# THE ZULU LANDSCAPE: A New Pact for Peace
+
+KwaZulu-Natal, once a flashpoint for political violence and factionalism, is entering a period of unprecedented cooperation between the ANC and the IFP. The 'KZN Stability Pact' of 2026 is designed to ensure that the province's developmental targets are met regardless of party friction.
+
+## Why It Matters
+KZN is the engine of the national logistics system, housing the Port of Durban. Political instability in this region doesn't just hurt local residents; it bottlenecks the entire nation's trade. A stable provincial government is a prerequisite for a growing ZAR.
+
+## The Agenda
+The shared cabinet is prioritizing the restoration of the South Coast infrastructure and the expansion of the Richards Bay green energy hub. By focusing on shared economic wins, the two parties are managing to suppress the historical tensions that once defined the province.
+    `
   },
   {
     id: "21",
@@ -752,8 +764,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "First-time voters are showing unprecedented interest in local governance, driven by climate and digital access issues.",
     image: {
-      url: "https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80&w=1200",
-      alt: "Young people in South Africa",
+      url: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200",
+      alt: "Young South Africans talking",
       caption: "The youth vote is no longer a monolith, with diverse interests driving engagement."
     },
     meta: {
@@ -765,7 +777,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Youth Voter Surge..."
+    content: `
+# GEN ALPHA AT THE POLLS: The Digital Electorate
+
+The 2026 municipal elections are set to see the largest turnout of young voters in South African history. Driven by a sense of urgency regarding climate change and the 'Digital Divide,' the under-25 demographic is moving from social media activism to formal political participation.
+
+## Why It Matters
+For years, 'Voter Apathy' was the buzzword when discussing the South African youth. This trend is reversing. Generation Alpha—those coming of age today—view the vote as a tool for systemic change, especially regarding the 'Start-up Economy' and 'Green Rights.'
+
+## The Campaign Shift
+Political parties are being forced to abandon old-school rallies in favor of interactive, VR-driven manifestos and direct engagement on gaming platforms. The party that can articulate a digital future without the corruption of the past is the one that will win the day.
+    `
   },
   {
     id: "22",
@@ -776,8 +798,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "The Free State province is shaking off its stagnant reputation with a series of successful public-private partnerships in Bloemfontein.",
     image: {
-      url: "https://images.unsplash.com/photo-1506466010722-395aa2bef877?auto=format&fit=crop&q=80&w=1200",
-      alt: "Bloemfontein building",
+      url: "https://images.unsplash.com/photo-1493134795325-1e82e347e3a9?auto=format&fit=crop&q=80&w=1200",
+      alt: "Bloemfontein city square",
       caption: "The 'City of Roses' is seeing a resurgence in municipal efficiency."
     },
     meta: {
@@ -789,7 +811,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Free State Renewal..."
+    content: `
+# THE BLOEMFONTEIN BOUNCE: Roses in the Free State
+
+Bloemfontein, the judicial capital of South Africa, is shedding its image of decay. Under a new, efficiency-focused provincial administration, the city is seeing its most significant infrastructure investment since the 2010 World Cup.
+
+## Why It Matters
+The Free State is the agricultural heart of South Africa. For the province to prosper, its administrative hub must function. The previous years of mismanagement are being systemicially dismantled through a 'Clean Audit' initiative that is drawing private investors back to the region.
+
+## The Transformation
+From the repaving of the major avenues to the restoration of the heritage buildings in the CBD, the 'Renewal' is visible. The new 'Agri-Logistics Hub' is already processing record volumes of grain for export, proving that the Free State is ready to lead again.
+    `
   },
   {
     id: "23",
@@ -800,8 +832,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "New provincial regulations in Limpopo aim to ensure more mining wealth remains within local communities.",
     image: {
-      url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200",
-      alt: "Mining site",
+      url: "https://images.unsplash.com/photo-1579450371694-8ab341257404?auto=format&fit=crop&q=80&w=1200",
+      alt: "Mining site at sunset",
       caption: "Limpopo's platinum belt remains a cornerstone of the provincial economy."
     },
     meta: {
@@ -813,7 +845,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Limpopo Mining..."
+    content: `
+# PLATINUM PROFITS: Keeping Wealth in Limpopo
+
+Limpopo, the custodian of the world's largest platinum deposits, is rewriting the rules of the mining game. The 2026 'Community Mineral Act' mandates that a significant portion of all mining royalties be directly reinvested into the infrastructure and education of the host towns.
+
+## Why It Matters
+For too long, the wealth extracted from Limpopo's soil hasn't translated into prosperity for its people. The new laws aim to bridge the gap between 'Corporate P&L' and 'Community Well-being,' ensuring that mining companies are partners in development, not just extractors.
+
+## The Future
+The impact is already visible in the new vocational colleges opening in Polokwane and Musina, focusing on 'Mining 4.0' technologies. By training the local workforce for high-tech mining jobs, Limpopo is securing its economic future for generations to come.
+    `
   },
   {
     id: "24",
@@ -837,7 +879,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Battle for the Cape..."
+    content: `
+# FISCAL FEDERALISM: The New Cape Crusade
+
+The conversation in the Western Cape has evolved. The radical talk of secession has been replaced by a more pragmatic, and legally sound, push for 'Fiscal Autonomy.' The province is now formally petitioning the GNU for the power to manage its own rail, police, and energy procurement.
+
+## Why It Matters
+This is a test case for the South African constitution. If the Western Cape can prove that decentralized management leads to better service delivery, it could provide a roadmap for Gauteng and KZN. It's about moving the 'Delivery Center' closer to the citizen.
+
+## The Infrastructure Lead
+Cape Town's successful integration of private energy into the grid has made it the only metro in SA to consistently avoid load-shifting. This 'Cape Model' is now being used as leverage in negotiations with Pretoria for control over the METRORAIL system, which remains the city's biggest transport bottleneck.
+    `
   },
   {
     id: "25",
@@ -848,8 +900,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "An unprecedented number of high-profile community leaders are registering as independent candidates for the 2026 local polls.",
     image: {
-      url: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=1200",
-      alt: "People sitting in a row",
+      url: "https://images.unsplash.com/photo-1549439602-43ebca2327af?auto=format&fit=crop&q=80&w=1200",
+      alt: "Diverse group of leaders",
       caption: "The rise of the individual over the party is a new trend in SA politics."
     },
     meta: {
@@ -861,7 +913,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Independents..."
+    content: `
+# POWER TO THE PEOPLE: The Independent Surge
+
+Is the party over? In 2026, the answer for many South Africans is a resounding 'maybe.' An unprecedented 1,500 independent candidates have registered for the municipal polls, signaling a massive shift away from rigid party loyalty in favor of local community leadership.
+
+## The Local Expert
+The rise of the independent is most visible in 'distressed' metros where service delivery has failed under traditionally party-led councils. These candidates are often former city managers, engineers, or community activists who promise 'Service over Spooks'—a dig at the ideological games played in Luthuli House or the DA's Federal Council.
+
+## A Challenge for the GNU
+While the GNU provides stability at the national level, the local level is becoming a laboratory for direct democracy. If independent candidates can win key wards, they will force the major parties into even more complex governing arrangements, potentially diluting the power of the central party machines.
+    `
   },
   {
     id: "26",
@@ -872,8 +934,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "As coalitions become the norm, a new legislative framework aims to prevent the 'musical chairs' of mayoralty changes.",
     image: {
-      url: "https://images.unsplash.com/photo-1521791136064-7986c2959d9a?auto=format&fit=crop&q=80&w=1200",
-      alt: "Handshake",
+      url: "https://images.unsplash.com/photo-1573164773711-33020300222a?auto=format&fit=crop&q=80&w=1200",
+      alt: "Meeting room discussion",
       caption: "Stability in coalitions is the primary goal of the new ethics code."
     },
     meta: {
@@ -885,7 +947,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Coalition Ethics..."
+    content: `
+# THE GENTLEMAN'S AGREEMENT: Legislating Coalition Ethics
+
+The 'Musical Chairs' of municipal governance is about to stop. The proposed 2026 'Coalition Framework Bill' aims to turn informal political handshakes into binding legal contracts, ensuring that mayors aren't swapped like trading cards every time a minor party feels slighted.
+
+## Stabilizing the Metro
+Under the new code, any party wishing to exit a coalition or file a motion of no confidence must first go through a mandatory 30-day mediation period. This is designed to prevent the overnight collapses that paralyzed the City of Joburg in previous years.
+
+## Transparency as a Tint
+Crucially, the bill also mandates that all coalition agreements be made public. Voters will finally be able to see the 'quid pro quo' that happens behind closed doors—whether it's an executive seat for a small party or a specific budget allocation for a provincial project.
+    `
   },
   {
     id: "27",
@@ -896,8 +968,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "Political parties are leveraging generative AI to target voter segments with unprecedented precision.",
     image: {
-      url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-      alt: "Digital screen with data",
+      url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
+      alt: "Cybersecurity concept",
       caption: "AI tools are becoming a double-edged sword for democratic discourse."
     },
     meta: {
@@ -909,7 +981,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Digital Campaigning AI..."
+    content: `
+# THE ALGORITHMIC CANVAS: AI and the 2026 Campaign
+
+The 2026 elections are the first truly 'AI-Native' polls in South Africa. From automated social media bots to deepfake-thatching software, the battle for the voter's mind has moved from the billboard to the neural network.
+
+## Precision Targeting
+Using generative AI, parties can now create 10,000 variations of the same policy announcement, each tailored to the specific anxieties of a micro-demographic. A student in Soweto sees a different version of the 'Work Plan' than a pensioner in Umhlanga, raising ethical questions about the consistency of political promises.
+
+## The Deepfake Defense
+The IEC's new 'Verification Shield' is a direct response to this threat. Using its own AI, the commission is flagging suspicious content in real-time, though the speed of the technology means that 'The Lie' often travels around the internet before the 'The Fact' can get its boots on.
+    `
   },
   {
     id: "28",
@@ -957,7 +1039,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for NHI 2.0..."
+    content: `
+# NHI 2.0: From Policy to Pulse
+
+The National Health Insurance (NHI) has finally transitioned from the legal drafting table to the dusty roads of rural Limpopo. This 'Limited Pilot Phase' is the first real-world test of the most ambitious social reform in South African history since 1994.
+
+## The Strategy: Primary Care First
+Unlike the broad-brush approach initially feared by the private sector, NHI 2.0 focuses exclusively on primary healthcare. The goal is to ensure that even in the most remote villages, every citizen has access to a fully equipped local clinic, reducing the pressure on overcrowded secondary hospitals.
+
+## The Funding Debate
+The elephant in the room remains the treasury. While the pilot is being funded through a specialized 'GNU Social Fund,' the long-term cost for a national rollout remains a point of heated debate in Parliament. The success or failure of this Limpopo pilot will likely determine the fate of the entire NHI project.
+    `
   },
   {
     id: "30",
@@ -1184,8 +1276,8 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     author: "Zahin van der Merwe",
     excerpt: "Johannesburg is undergoing a massive facelift as it prepares to host the world's most powerful leaders next month.",
     image: {
-      url: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=1200",
-      alt: "Johannesburg skyline",
+      url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=1200",
+      alt: "G20 delegates",
       caption: "Hosting the G20 is seen as a major diplomatic win for the GNU."
     },
     meta: {
@@ -1629,7 +1721,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for North West Drought..."
+    content: `
+# DROUGHT IN THE MAIZE BELT: North West's Climate Crisis
+
+The North West province, the heart of South Africa's maize production, is currently facing a catastrophic drought that threatens national food security. With reservoir levels at a 20-year low, farmers are calling for immediate federal intervention.
+
+## Why It Matters
+A failure in the North West maize crop doesn't just hurt the local economy; it drives up the price of the national staple, affecting every household in the country. The GNU has responded with an emergency relief package, but critics say the long-term solution lies in massive investment in climate-resilient irrigation.
+
+## The Strategy
+The provincial government is prioritizing smallholder farmers for the first wave of water-sharing grants. However, with the El Niño cycle expected to persist through late 2026, the 'Maize Belt' is bracing for a season of survival.
+    `
   },
   {
     id: "58",
@@ -1653,7 +1755,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Northern Cape Prosperity..."
+    content: `
+# THE HYDROGEN HUB: Upington's Billion-Dollar Turnaround
+
+Forget mining; the future of the Northern Cape is in the sky and the sea. The 'Project liquid Gold' initiative is transforming the province into the global epicentre of green hydrogen production, bringing thousands of high-tech jobs to the region.
+
+## Why It Matters
+This is South Africa's play for the 21st-century energy market. By leveraging the Northern Cape's solar intensity, the province can produce hydrogen more cheaply than almost anywhere else on Earth. The result is a surge in local GDP that is outperforming even Gauteng and the Western Cape.
+
+## The Impact
+In towns like Upington and Kimberley, the 'Hydrogen Rush' is visible in the new university campuses and the upgraded fiber-optic backbones connecting rural schools to the global cloud.
+    `
   },
   {
     id: "59",
@@ -1677,7 +1789,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Eastern Cape Waterfront..."
+    content: `
+# MARITIME MOMENTUM: Reclaiming the Eastern Cape Coast
+
+The ports of Gqeberha and East London are undergoing their most significant modernization since the 1970s. A R10 billion investment is aimed at making the Eastern Cape the automotive export capital of the southern hemisphere.
+
+## Why It Matters
+The automotive sector is the backbone of the Eastern Cape's industrial economy. By automating container handling and linking the Coega IDZ directly to the deep-water harbor via a new high-speed rail spur, the province is cutting export times by 30%.
+
+## The Vision
+The 'Waterfront Rebuild' isn't just about cranes and ships; it's about regional stability. A functioning port system ensures the long-term viability of the thousands of manufacturing jobs that sustain families from Port Elizabeth to Mthatha.
+    `
   },
   {
     id: "60",
@@ -1701,7 +1823,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for AI Hansard..."
+    content: `
+# INSTANT INSIGHT: The AI-Powered Hansard
+
+Parliament has officially entered the digital age. A new AI-driven system is now providing real-time, multi-lingual transcripts of all committee meetings and National Assembly debates, ensuring that the work of government is accessible to every citizen in their own language.
+
+## Why It Matters
+Transparency is the foundation of the GNU's mandate. By removing the language barrier and providing instant records of legislative work, the AI Hansard makes it impossible for political maneuvers to happen in the dark. It is a win for accountability and democracy.
+
+## The Technology
+The system, developed in partnership with local CSIR researchers, handles all 11 official languages with a 98% accuracy rate. It is estimated to save the taxpayer R200 million a year in translation and administrative costs.
+    `
   },
   {
     id: "61",
@@ -1725,7 +1857,17 @@ The 2026 elections will be a referendum on the GNU. By consolidating around Rama
     internalLinks: [],
     externalSources: [],
     faq: [],
-    content: "Content for Public Protector Powers..."
+    content: `
+# PROTECTING THE PROTECTOR: The Fight for Oversight
+
+The debate over the powers of the Public Protector has reached the halls of the Constitutional Court. A new bill aims to make the office's remedial actions legally binding—a move that supporters say is vital for fighting corruption, but critics fear could lead to executive paralysis.
+
+## Why It Matters
+The Public Protector is the 'People's Advocate.' If the office has no teeth, it cannot effectively hold the executive to account. In the coalition era of the GNU, where cross-party oversight is the norm, the independence of this office is more critical than ever.
+
+## The Stance
+The GNU has signaled its support for a 'Hardened' Public Protector, provided that a new judicial review process is established to prevent the office from being used as a political weapon. It is a delicate balance that will define the next decade of South African law.
+    `
   },
   {
     id: "1",

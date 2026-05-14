@@ -58,7 +58,21 @@ export async function generateNewBlogPost(topic?: string): Promise<Partial<BlogP
       date: new Date().toISOString(),
       author: "ZAR AI Monitor",
       image: {
-        url: `https://images.unsplash.com/photo-1541873676947-9cc09174e0d0?auto=format&fit=crop&q=80&w=1200&sig=${Math.random()}`,
+        url: (() => {
+          const ids = [
+            "photo-1589216532372-1c2a367900d8", // Parliamentary
+            "photo-1541873676947-9cc09174e0d0", // Infrastructure
+            "photo-1611974714851-eb6053e6235b", // Economy
+            "photo-1451187580459-43490279c0fa", // Connectivity
+            "photo-1525498128493-380d1990a112", // Mining
+            "photo-1577495508048-b635879837f1", // Johannesburg
+            "photo-1580060839134-75a5edca2e99", // Cape Town
+            "photo-1548345680-f5475ee511d7", // Africa Map
+            "photo-1589829545856-d10d557cf95f"  // Justice
+          ];
+          const randomId = ids[Math.floor(Math.random() * ids.length)];
+          return `https://images.unsplash.com/${randomId}?auto=format&fit=crop&q=80&w=1200&sig=${Math.random()}`;
+        })(),
         alt: data.image.alt,
         caption: data.image.description
       },

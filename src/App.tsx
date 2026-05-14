@@ -336,6 +336,7 @@ function BlogApp() {
           </div>
         } />
           <Route path="/posts/:slug" element={<BlogDetail posts={posts} />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/admin" element={<AdminPanel posts={posts} setPosts={(newPosts) => {
             setPosts(newPosts);
             localStorage.setItem('zar_posts_cache', JSON.stringify(newPosts));
@@ -369,6 +370,7 @@ function BlogApp() {
               <nav className="flex flex-col gap-3">
                 <a href="#" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">About Us</a>
                 <a href="#" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Ethics Policy</a>
+                <Link to="/privacy-policy" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Privacy Policy</Link>
                 <Link to="/admin" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Admin Panel</Link>
                 <a href="#" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">AdSense Partner</a>
               </nav>
@@ -383,7 +385,10 @@ function BlogApp() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between pt-10 border-t border-zinc-100 gap-6">
-            <p className="text-xs text-zinc-400">© 2026 Political Pulse. All rights reserved. Registered PII Protected.</p>
+            <p className="text-xs text-zinc-400">
+              © 2026 Political Pulse. All rights reserved. Registered PII Protected. 
+              <Link to="/privacy-policy" className="ml-4 hover:text-zinc-900 transition-colors">Privacy Information</Link>
+            </p>
             <div className="flex gap-6">
               <Share2 className="w-4 h-4 text-zinc-400 hover:text-zinc-900 cursor-pointer" />
               <MessageSquare className="w-4 h-4 text-zinc-400 hover:text-zinc-900 cursor-pointer" />
@@ -556,6 +561,80 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
           SEO Insight: {post.meta.description}
         </div>
       </article>
+    </motion.div>
+  );
+}
+
+function PrivacyPolicy() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Privacy Policy | Political Pulse";
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="bg-white min-h-screen py-24"
+    >
+      <div className="max-w-3xl mx-auto px-4">
+        <button onClick={() => navigate('/')} className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors mb-12">
+          <X className="w-3 h-3" /> Back to Intelligence Feed
+        </button>
+        
+        <div className="breaking-label">LEGAL DOCUMENTATION</div>
+        <h1 className="text-4xl md:text-6xl font-serif font-black leading-[1.05] mb-12 tracking-tight">
+          Privacy Policy
+        </h1>
+
+        <div className="markdown-body font-sans space-y-8 text-zinc-800 leading-relaxed">
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">1. Data Commitment</h2>
+            <p>
+              Political Pulse is dedicated to maintaining the highest standards of data integrity and user privacy. As an intelligence-focused platform operating within the South African Government of National Unity (GNU) framework, we recognize the sensitive nature of political discourse and the absolute necessity of protecting our users' digital identities.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">2. Information We Collect</h2>
+            <p>
+              We collect minimal data necessary to provide our intelligence services:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 mt-4">
+              <li><strong>Session Data:</strong> Temporary identifiers to manage your preferences and authentication state.</li>
+              <li><strong>Analytics:</strong> Aggregated, non-identifiable usage patterns to optimize performance and content relevance.</li>
+              <li><strong>Newsletter Information:</strong> Voluntarily provided email addresses for the delivery of daily briefings.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">3. Protection of Personal Intelligence (PIPI)</h2>
+            <p>
+              Our internal protocols exceed the standard requirements of the Protection of Personal Information Act (POPIA). We do not sell, trade, or otherwise transfer your data to third-party political entities or commercial advertisers. All intelligence data is encrypted in transit and at rest.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">4. Cookies and Tracking</h2>
+            <p>
+              We use functional cookies to ensure a seamless "Pulse" experience across our vertical silos. These do not track your behavior on external websites or social platforms.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">5. Revisions and Transparency</h2>
+            <p>
+              In the volatile landscape of the 2026 political cycle, this policy may be revised to reflect new legislative safeguards. Continued use of our analysis platform constitutes acceptance of these standards.
+            </p>
+          </section>
+
+          <div className="pt-12 border-t border-zinc-100 text-[10px] uppercase font-bold text-zinc-400 tracking-widest">
+            Last Updated: May 14, 2026 | Document ID: PP-PRIV-2026-V1
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -876,6 +955,26 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
                       value={editingPost.excerpt} 
                       onChange={(e) => setEditingPost(prev => prev ? { ...prev, excerpt: e.target.value } : null)}
                       className="w-full bg-zinc-800 border-none text-zinc-400 px-4 py-3 text-[10px] leading-relaxed focus:ring-1 focus:ring-brand-gold h-24"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[8px] font-black text-zinc-500 uppercase tracking-widest mb-2">Featured Image URL</label>
+                    <input 
+                      value={editingPost.image.url} 
+                      onChange={(e) => setEditingPost(prev => prev ? { ...prev, image: { ...prev.image, url: e.target.value } } : null)}
+                      className="w-full bg-zinc-800 border-none text-brand-gold px-4 py-2 text-[10px] focus:ring-1 focus:ring-brand-gold"
+                      placeholder="https://images.unsplash.com/..."
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[8px] font-black text-zinc-500 uppercase tracking-widest mb-2">Image Alt Description</label>
+                    <input 
+                      value={editingPost.image.alt} 
+                      onChange={(e) => setEditingPost(prev => prev ? { ...prev, image: { ...prev.image, alt: e.target.value } } : null)}
+                      className="w-full bg-zinc-800 border-none text-zinc-400 px-4 py-2 text-[10px] focus:ring-1 focus:ring-brand-gold"
+                      placeholder="Describe the image for accessibility"
                     />
                   </div>
 
