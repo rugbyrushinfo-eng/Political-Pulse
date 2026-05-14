@@ -166,11 +166,11 @@ function BlogApp() {
                       The Heartbeat of <span className="text-zinc-400">SA Power</span>
                     </h1>
                     <p className="text-lg text-zinc-600 leading-relaxed font-serif italic">
-                      South Africa stands at a historic crossroads this May 2026. As the Phala Phala 'Farmgate' impeachment saga reaches a fever pitch in Parliament, the Government of National Unity faces its sternest test yet against a backdrop of national climate disasters and shifting continental alliances. From the airlifts in Ghana to the billionaire tax crackdowns in Pretoria, the pulse of the nation has never been faster.
+                      Your definitive source for the <span className="font-bold border-b-2 border-brand-gold">latest political news South Africa today</span>. In the volatile 2026 landscape, we track the pulse of the GNU, from the corridors of Parliament to the streets of our metros. Stay informed on the <span className="font-bold italic">Ramaphosa impeachment crisis</span>, economic shifts, and the high-stakes policies shaping the future of the Republic.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['#RamaphosaImpeachment', '#SAFloods2026', '#ZARRecovery', '#GNUPulse', '#XenophobiaCrisis', '#TaxJusticeSA'].map(tag => (
+                    {['#LatestSouthAfricaPoliticalNews', '#RamaphosaImpeachmentUpdate', '#SApoliticsToday', '#BreakingNewsSouthAfrica', '#ANCcrisis2026'].map(tag => (
                       <span key={tag} className="px-3 py-1 bg-zinc-100 text-zinc-500 rounded-full text-[10px] font-mono font-medium hover:bg-black hover:text-white transition-colors cursor-pointer">
                         {tag}
                       </span>
@@ -475,9 +475,14 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
       <article className="max-w-4xl mx-auto px-4 py-16 md:py-24">
         <header className="mb-12">
           <div className="breaking-label">IN-DEPTH ANALYSIS</div>
-          <h1 className="text-4xl md:text-6xl font-serif font-black leading-[1.05] mb-8 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-serif font-black leading-[1.05] mb-4 tracking-tight">
             {post.title}
           </h1>
+          {post.subheadline && (
+            <p className="text-lg md:text-xl font-serif italic text-zinc-500 mb-8 leading-relaxed">
+              {post.subheadline}
+            </p>
+          )}
           <div className="flex items-center justify-between border-y border-zinc-100 py-6 text-[10px] font-bold uppercase tracking-widest text-zinc-400">
             <div className="flex items-center gap-6">
               <span>Author: {post.author}</span>
@@ -497,13 +502,19 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
 
         <div className="bg-zinc-50 border-l-4 border-brand-green p-8 mb-16">
           <h3 className="text-xs font-black uppercase tracking-[0.2em] mb-6 text-brand-green">Strategic Takeaways</h3>
-          <ul className="space-y-4">
+          <ul className="space-y-4 mb-8">
             {post.keyTakeaways.map((item, i) => (
               <li key={i} className="text-sm font-bold leading-relaxed text-zinc-800 italic">
                 &ldquo;{item}&rdquo;
               </li>
             ))}
           </ul>
+          {post.whyItMatters && (
+            <div className="pt-6 border-t border-zinc-200">
+              <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 text-zinc-400">Why It Matters</h4>
+              <p className="text-sm font-medium text-zinc-600">{post.whyItMatters}</p>
+            </div>
+          )}
         </div>
 
         <div className="markdown-body font-sans">
@@ -556,6 +567,19 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
             ))}
           </div>
         </div>
+
+        {post.meta.cloudKeywords && (
+          <div className="mt-12 py-8 border-t border-zinc-100">
+            <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-zinc-400">Intelligence Cloud</h4>
+            <div className="flex flex-wrap gap-2">
+              {post.meta.cloudKeywords.map((word, i) => (
+                <span key={i} className="px-3 py-1 bg-zinc-50 text-[10px] font-mono text-zinc-500 rounded-sm border border-zinc-100 cursor-default hover:bg-zinc-100 transition-colors">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-10 pt-10 border-t border-zinc-100 font-serif italic text-sm text-zinc-400">
           SEO Insight: {post.meta.description}
@@ -617,10 +641,15 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-serif font-bold text-black mb-4">4. Cookies and Tracking</h2>
+            <h2 className="text-2xl font-serif font-bold text-black mb-4">4. Cookies and Advertising Intelligence</h2>
             <p>
-              We use functional cookies to ensure a seamless "Pulse" experience across our vertical silos. These do not track your behavior on external websites or social platforms.
+              We use functional cookies to ensure a seamless "Pulse" experience across our vertical silos. Additionally:
             </p>
+            <ul className="list-disc pl-6 space-y-2 mt-4">
+              <li><strong>Third-Party Vendors:</strong> Third-party vendors, including Google, use cookies to serve ads based on your prior visits to our platform or other websites.</li>
+              <li><strong>AdSense Integration:</strong> Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to Political Pulse and/or other sites on the Internet.</li>
+              <li><strong>Opt-Out:</strong> You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-brand-green underline">Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-brand-green underline">www.aboutads.info</a>.</li>
+            </ul>
           </section>
 
           <section>
