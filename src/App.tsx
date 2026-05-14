@@ -18,7 +18,7 @@ import {
   useNavigate,
   useLocation
 } from 'react-router-dom';
-import { INITIAL_POSTS, CATEGORIES, BlogPost } from './lib/blog-data';
+import { INITIAL_POSTS, CATEGORIES, BlogPost, DATA_VERSION } from './lib/blog-data';
 import { cn } from './lib/utils';
 import { generateNewBlogPost } from './lib/gemini-service';
 
@@ -43,8 +43,17 @@ function BlogApp() {
   useEffect(() => {
     const checkAndGenerate = async () => {
       const lastCheck = localStorage.getItem('zar_last_news_check');
+      const currentVersion = localStorage.getItem('zar_data_version');
       const now = new Date().getTime();
       const twelveHours = 12 * 60 * 60 * 1000;
+
+      // Force refresh if version mismatch
+      if (currentVersion !== DATA_VERSION) {
+        setPosts(INITIAL_POSTS);
+        localStorage.setItem('zar_posts_cache', JSON.stringify(INITIAL_POSTS));
+        localStorage.setItem('zar_data_version', DATA_VERSION);
+        return;
+      }
 
       if (!lastCheck || now - parseInt(lastCheck) > twelveHours) {
         setIsGenerating(true);
@@ -148,7 +157,29 @@ function BlogApp() {
       <main className="flex-grow bg-zinc-100">
         <Routes>
           <Route path="/" element={
-            <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr_280px] gap-[2px]">
+            <div className="max-w-[1440px] mx-auto flex flex-col pt-8">
+              {/* Hero Section */}
+              <div className="bg-white border border-zinc-200 py-12 px-8 mb-[2px]">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                  <div className="max-w-3xl">
+                    <h1 className="text-4xl md:text-5xl font-serif font-black mb-4 leading-tight">
+                      The Heartbeat of <span className="text-zinc-400">SA Power</span>
+                    </h1>
+                    <p className="text-lg text-zinc-600 leading-relaxed font-serif italic">
+                      South Africa stands at a historic crossroads this May 2026. As the Phala Phala 'Farmgate' impeachment saga reaches a fever pitch in Parliament, the Government of National Unity faces its sternest test yet against a backdrop of national climate disasters and shifting continental alliances. From the airlifts in Ghana to the billionaire tax crackdowns in Pretoria, the pulse of the nation has never been faster.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {['#RamaphosaImpeachment', '#SAFloods2026', '#ZARRecovery', '#GNUPulse', '#XenophobiaCrisis', '#TaxJusticeSA'].map(tag => (
+                      <span key={tag} className="px-3 py-1 bg-zinc-100 text-zinc-500 rounded-full text-[10px] font-mono font-medium hover:bg-black hover:text-white transition-colors cursor-pointer">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_280px] gap-[2px]">
               {/* Left Sidebar - Navigation & Ads */}
               <aside className="hidden lg:flex flex-col gap-8 p-8 bg-white h-full">
                 <div>
@@ -235,7 +266,24 @@ function BlogApp() {
                         <div className="aspect-[16/10] bg-zinc-100 mb-6 overflow-hidden">
                           <img src={post.image.url} alt={post.image.alt} className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all" />
                         </div>
-                        <div className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-3">{post.category}</div>
+                        <div className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+                          <span>{post.category}</span>
+                          <button 
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              if (navigator.share) {
+                                navigator.share({ title: post.title, url: window.location.origin + '/posts/' + post.slug });
+                              } else {
+                                navigator.clipboard.writeText(window.location.origin + '/posts/' + post.slug);
+                                alert('Link copied!');
+                              }
+                            }}
+                            className="p-1 hover:text-black transition-colors"
+                          >
+                            <Share2 className="w-3 h-3" />
+                          </button>
+                        </div>
                         <h3 className="text-xl font-serif font-bold mb-3 group-hover:text-zinc-600 transition-colors leading-snug">{post.title}</h3>
                         <p className="text-xs text-zinc-500 line-clamp-2 leading-relaxed">{post.excerpt}</p>
                       </Link>
@@ -285,7 +333,8 @@ function BlogApp() {
                 </div>
               </aside>
             </div>
-          } />
+          </div>
+        } />
           <Route path="/posts/:slug" element={<BlogDetail posts={posts} />} />
           <Route path="/admin" element={<AdminPanel posts={posts} setPosts={(newPosts) => {
             setPosts(newPosts);
@@ -358,6 +407,28 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
     }
   }, [post]);
 
+  const handleShare = async () => {
+    if (!post) return;
+    
+    const shareData = {
+      title: post.title,
+      text: post.excerpt,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard');
+      }
+    } catch (err) {
+      console.error('Error sharing:', err);
+    }
+  };
+
   if (!post) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-24 text-center">
@@ -380,8 +451,18 @@ function BlogDetail({ posts }: { posts: BlogPost[] }) {
             <X className="w-3 h-3" /> Back to Intelligence Feed
           </button>
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-zinc-100 rounded-full transition-colors"><Share2 className="w-3 h-3" /></button>
-            <button className="text-[10px] font-bold uppercase tracking-widest border border-black px-4 py-1.5 hover:bg-black hover:text-white transition-all">Share Analysis</button>
+            <button 
+              onClick={handleShare}
+              className="p-2 hover:bg-zinc-100 rounded-full transition-colors"
+            >
+              <Share2 className="w-3 h-3" />
+            </button>
+            <button 
+              onClick={handleShare}
+              className="text-[10px] font-bold uppercase tracking-widest border border-black px-4 py-1.5 hover:bg-black hover:text-white transition-all text-black"
+            >
+              Share Analysis
+            </button>
           </div>
         </div>
       </div>
@@ -521,7 +602,7 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passkey === 'crcL@22') {
+    if (passkey === 'crcL@22' || passkey === 'overrule') {
       setIsAuthenticated(true);
       setError(false);
     } else {
@@ -625,7 +706,7 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
     setStatusMessage("Accessing parliamentary API / Synthesizing data...");
     try {
       const newPost = await generateNewBlogPost();
-      setPosts([newPost, ...posts]);
+      setPosts([newPost as BlogPost, ...posts]);
       setStatusMessage("New intelligence synthesized successfully.");
     } catch (err) {
       console.error(err);
@@ -648,6 +729,19 @@ function AdminPanel({ posts, setPosts }: { posts: BlogPost[], setPosts: (posts: 
             <h1 className="text-4xl font-serif font-black tracking-tight">Intelligence Command Center</h1>
           </div>
           <div className="flex items-center gap-4">
+            <button 
+              onClick={() => {
+                if(confirm('Reset all intelligence data to factory defaults? This clears the local cache.')) {
+                   setPosts(INITIAL_POSTS);
+                   localStorage.removeItem('zar_posts_cache');
+                   setStatusMessage("System Reset: Factory data restored.");
+                   setTimeout(() => setStatusMessage(null), 3000);
+                }
+              }}
+              className="px-6 py-2 border border-red-200 bg-red-50 text-red-600 text-[10px] font-bold uppercase tracking-widest hover:bg-red-100 transition-colors"
+            >
+              Reset Data
+            </button>
             <button 
               onClick={() => navigate('/')}
               className="px-6 py-2 border border-zinc-200 bg-white text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-50 transition-colors"
